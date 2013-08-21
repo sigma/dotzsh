@@ -1,1 +1,1 @@
-/Users/yann/.zprezto/runcoms/zlogin
+.zprezto/runcoms/zlogin
