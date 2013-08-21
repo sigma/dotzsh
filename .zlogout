@@ -1,0 +1,1 @@
+/Users/yann/.zprezto/runcoms/zlogout
