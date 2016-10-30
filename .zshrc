@@ -32,6 +32,10 @@ if [[ -d "/usr/local/opt/coreutils/libexec/gnubin/" ]]; then
    )
 fi
 
+if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
+   source "$HOME/.nix-profile/etc/profile.d/nix.sh"
+fi
+
 export DEFAULT_USER=$USER
 
 #
