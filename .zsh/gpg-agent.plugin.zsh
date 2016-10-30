@@ -40,8 +40,5 @@
 # GPG_TTY=$(tty)
 # export GPG_TTY
 
-if [ -z "$GPG_ID" ]; then
-    eval `keychain -q --nogui --eval --agents ssh,gpg --inherit any-once id_rsa yann coreos_rdops digital_ocean`
-else
-    eval `keychain -q --nogui --eval --agents ssh,gpg --inherit any-once id_rsa yann coreos_rdops digital_ocean $GPG_ID`
-fi
+KEYS=`echo $HOME/.ssh/*.pub(:t:r)`
+eval `keychain -q --nogui --eval --agents ssh,gpg --inherit any-once $KEYS $GPG_ID`
