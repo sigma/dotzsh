@@ -78,7 +78,7 @@ if [[ -s ${ZDOTDIR:-${HOME}}/.zplug/init.zsh ]]; then
     export EMOJI_CLI_KEYBIND="^Xe"
     zplug "b4b4r07/emoji-cli"
 
-    zplug "~/.zsh", from:local, use:"*.zsh"
+    zplug "~/.zsh", from:local, use:"*.zsh", nice:17
 
     zplug "junegunn/fzf", use:"shell/*.zsh"
 
@@ -98,7 +98,7 @@ if [[ -s ${ZDOTDIR:-${HOME}}/.zplug/init.zsh ]]; then
     zplug "zsh-users/zsh-syntax-highlighting", nice:18
 
     zplug "zsh-users/zsh-history-substring-search", nice:19
-    
+
     zplug "zsh-users/zsh-completions"
 
     # Install plugins if there are plugins that have not been installed
@@ -115,9 +115,38 @@ if [[ -s ${ZDOTDIR:-${HOME}}/.zplug/init.zsh ]]; then
     zstyle ':filter-select' max-lines -10
     zstyle ':filter-select' extended-search yes
 
-    bindkey '^R' zaw-history
+    # bindkey '^R' zaw-history
     bindkey '^Xb' zaw-bookmark
     bindkey '^Xz' zaw-z
+
+    bindkey '^T' transpose-chars
+    bindkey '\ec' capitalize-word
+
+    export FZF_COMPLETION_OPTS='+c -x'
+    export FZF_DEFAULT_OPTS="--multi --inline-info"
+    export FZF_CTRL_R_OPTS='--sort'
+
+    if [ "$+commands[blsd]" -ne 0 ]; then
+        export FZF_ALT_C_COMMAND=blsd
+
+        _fzf_compgen_dir() {
+            blsd "$1"
+        }
+    fi
+
+    if [ "$+commands[ag]" -ne 0 ]; then
+        _fzf_compgen_path() {
+            ag -g "" "$1"
+        }
+        export FZF_DEFAULT_COMMAND='ag -g ""'
+        export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    fi
+
+    bindkey '\eg' fzf-cd-widget
+    bindkey '^F' fzf-file-widget
+    bindkey '^I' fzf-completion
+
+
 
     bindkey '^]' anyframe-widget-cd-ghq-repository
 
