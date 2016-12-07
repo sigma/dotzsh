@@ -40,8 +40,8 @@
 # GPG_TTY=$(tty)
 # export GPG_TTY
 
-if [ -S "/tmp/$USER/ssh-agent.sock" ]; then
-    export SSH_AUTH_SOCK="/tmp/$USER/ssh-agent.sock"
+if [ -S "$HOME/.ssh/ssh_auth_sock_$HOSTNAME" ]; then
+    export SSH_AUTH_SOCK="$HOME/.ssh/ssh_auth_sock_$HOSTNAME"
 fi
 
 KEYS=`echo $HOME/.ssh/*.pub(:t:r)`
