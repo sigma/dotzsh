@@ -41,4 +41,4 @@
 # export GPG_TTY
 
 KEYS=`echo $HOME/.ssh/*.pub(:t:r)`
-eval `keychain -q --nogui --eval --agents ssh,gpg --inherit any-once $KEYS $GPG_ID`
+eval `keychain -q --nogui --eval --agents ssh,gpg --inherit any-once --ignore-missing $KEYS $GPG_ID`
