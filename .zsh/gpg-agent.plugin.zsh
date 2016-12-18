@@ -44,5 +44,4 @@ if [ -S "$HOME/.ssh/ssh_auth_sock_$HOSTNAME" ]; then
     export SSH_AUTH_SOCK="$HOME/.ssh/ssh_auth_sock_$HOSTNAME"
 fi
 
-KEYS=`echo $HOME/.ssh/*.pub(:t:r)`
-eval `keychain -q --nogui --eval --agents ssh,gpg --inherit any-once --ignore-missing $KEYS $GPG_ID`
+eval `keychain -q --nogui --eval --agents ssh,gpg --inherit any-once --ignore-missing $HOME/.ssh/*.pub(:t:r) $GPG_ID`

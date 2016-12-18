@@ -55,7 +55,7 @@ WORDCHARS=''
 if [[ -s ${ZDOTDIR:-${HOME}}/.zplug/init.zsh ]]; then
     source ${ZDOTDIR:-${HOME}}/.zplug/init.zsh
 
-    zplug "zplug/zplug"
+#    zplug "zplug/zplug"
 
     zplug "djui/alias-tips"
     zplug "peterhurford/git-it-on.zsh"
@@ -170,7 +170,7 @@ fi
 function rehash () {
     hash -r
     hash -rd
-    [ -s $HOME/.local.hashes ] && source ~/.local.hashes
+    [ -e $HOME/.local.hashes ] && source ~/.local.hashes || true
 }
 
 rehash
