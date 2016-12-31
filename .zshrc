@@ -61,10 +61,10 @@ if [[ -s ${ZDOTDIR:-${HOME}}/.zplug/init.zsh ]]; then
     zplug "peterhurford/git-it-on.zsh"
 
     zplug "mafredri/zsh-async", on:sindresorhus/pure
-    zplug "sindresorhus/pure", nice:18
+    zplug "sindresorhus/pure", defer:2
 
     BASE16_SCHEME="solarized-dark"
-    zplug "chriskempson/base16-shell", use:"scripts/base16-$BASE16_SCHEME.sh", nice:-19
+    zplug "chriskempson/base16-shell", use:"scripts/base16-$BASE16_SCHEME.sh", defer:0
     zplug "chriskempson/base16-shell", use:colortest, as:command
 
     zplug "k4rthik/git-cal", as:command
@@ -78,26 +78,25 @@ if [[ -s ${ZDOTDIR:-${HOME}}/.zplug/init.zsh ]]; then
     export EMOJI_CLI_KEYBIND="^Xe"
     zplug "b4b4r07/emoji-cli"
 
-    zplug "~/.zsh", from:local, use:"*.zsh", nice:17
+    zplug "~/.zsh", from:local, use:"*.zsh", defer:1
 
     zplug "junegunn/fzf", use:"shell/*.zsh"
 
     zplug 'zsh-users/zaw'
 
-    # zplug 'rupa/z'
-    zplug 'knu/z', use:'z.sh', nice:10
+    zplug 'rupa/z', use:'z.sh'
 
-    zplug 'NigoroJr/zaw-z', nice:11, on:'zsh-users/zaw'
+    zplug 'NigoroJr/zaw-z', on:'zsh-users/zaw'
 
     zplug "supercrabtree/k"
 
-    zplug "plugins/golang", from:oh-my-zsh, nice:10
+    zplug "plugins/golang", from:oh-my-zsh
 
-    zplug "zsh-users/zsh-autosuggestions", nice:10
+    zplug "zsh-users/zsh-autosuggestions"
 
-    zplug "zsh-users/zsh-syntax-highlighting", nice:18
+    zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
-    zplug "zsh-users/zsh-history-substring-search", nice:19
+    zplug "zsh-users/zsh-history-substring-search", defer:3
 
     zplug "zsh-users/zsh-completions"
 
