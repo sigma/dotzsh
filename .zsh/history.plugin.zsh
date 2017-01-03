@@ -6,8 +6,8 @@
 HISTFILE="${ZDOTDIR:-${HOME}}/.zhistory"
 
 # limit of history entries
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=50000
+SAVEHIST=$HISTSIZE
 
 # Perform textual history expansion, csh-style, treating the character ‘!’ specially.
 setopt BANG_HIST
