@@ -40,8 +40,15 @@
 # GPG_TTY=$(tty)
 # export GPG_TTY
 
+if [ -e "$HOME/.gpg-agent-info" ]; then
+    source "$HOME/.gpg-agent-info"
+    export GPG_AGENT_INFO
+    export SSH_AUTH_SOCK
+    export SSH_AGENT_PID
+fi
+
 if [ -S "$HOME/.ssh/ssh_auth_sock_$HOSTNAME" ]; then
     export SSH_AUTH_SOCK="$HOME/.ssh/ssh_auth_sock_$HOSTNAME"
 fi
 
-eval `keychain -q --nogui --eval --agents ssh,gpg --inherit any-once --ignore-missing $HOME/.ssh/*.pub(:t:r) $GPG_ID`
+eval `keychain -q --nogui --eval --agents ssh,gpg --inherit any-once --stop others --ignore-missing $HOME/.ssh/*.pub(:t:r) $GPG_ID`
